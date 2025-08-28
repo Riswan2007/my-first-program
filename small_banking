@@ -1,11 +1,13 @@
 from datetime import datetime
 class BankAccount:
+  dummy=None
   def __init__(self,Account_number,Balance,Mpin):
     self.__Account_number=Account_number
     self.__Balance=Balance
     self.Mpin=Mpin
+    self.dummy=Balance
   def get_Balance(self):
-    print(self.__Balance)
+    print("Total Balnce:"self.__Balance)
   def deposit(self,amt):
     self.__Balance+=amt
   def withdraw(self,amt):
@@ -31,9 +33,10 @@ while True:
       elif ch=="withdraw":
           amt=int(input("Enter the amount:"))
           person1.withdraw(amt)
-          amount.append(amt)
-          time.append(datetime.now())
-          method.append(ch)
+          if amt<=person1.dummy:
+              amount.append(amt)
+              time.append(datetime.now())
+              method.append(ch)
       else:
         person1.get_Balance()
       break
@@ -41,7 +44,7 @@ while True:
       print("Incorrect Pin please enter again.")
   state=input("If you want statement yes or no:").lower()
   if state=="yes":
-      print("Date and Time                  method      amount")
+      print("Date             Time          method      amount")
       for i in range(len(amount)):
           print(time[i],"   ",method[i],"   ",amount[i])
   m=input('Enter the choice yes or no:').lower()
