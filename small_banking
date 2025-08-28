@@ -1,0 +1,34 @@
+class BankAccount:
+  def __init__(self,Account_number,Balance,Mpin):
+    self.__Account_number=Account_number
+    self.__Balance=Balance
+    self.Mpin=Mpin
+  def get_Balance(self):
+    print(self.__Balance)
+  def deposit(self,amt):
+    self.__Balance+=amt
+  def withdraw(self,amt):
+    if amt<=self.__Balance:
+        self.__Balance-=amt
+    else:
+        print("Insufficient Balance.")
+person1=BankAccount(234123,10000,2345)
+while True:
+  for i in range(3):
+    n=int(input("Enter the Pin:"))
+    if n==person1.Mpin:
+      ch=input("Enter the option 'deposit', 'withdraw', 'balance':").lower()
+      if ch=="deposit":
+        amt=int(input("Enter the amount:")) 
+        person1.deposit(amt)
+      elif ch=="withdraw":
+          amt=int(input("Enter the amount:"))
+          person1.withdraw(amt)
+      else:
+        person1.get_Balance()
+      break
+    else:
+      print("Incorrect Pin please enter again.")
+  m=input('Enter the choice yes or no:').lower()
+  if m=="no":
+    break
