@@ -1,0 +1,21 @@
+class Solution(object):
+    def findClosest(self, x, y, z):
+        sum1=x
+        sum2=y
+        while sum1!=z and sum2!=z:
+            if sum1<z:
+                sum1+=1
+            else:
+                sum1-=1
+            if sum2<z:
+                sum2+=1
+            else:
+                sum2-=1
+        if sum1==z and sum2!=z:
+            return 1
+        elif sum2==z and sum1!=z:
+            return 2
+        else:
+            return 0
+
+        
